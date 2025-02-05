@@ -38,7 +38,8 @@ class GoogleImageParser
         if image_id = element.attr('id')
           script = nonce_scripts.find{|e| e.text.include?(image_id)}
           if script&.text =~ /var s=['"](.*?)['"]/
-            image = $1  # This will store the first capture group (the base64 string)
+            image = $1  # first capture group is the base64 string
+            image.gsub!(/\\x([0-9A-Fa-f]+)/) { |match| [match[2..-1]].pack('H*') } # fancier version of image.gsub!("\\x3d","=")
           end
         end
       end
@@ -48,12 +49,13 @@ class GoogleImageParser
 
       div = element.next_sibling
       name, year = div.css("div").map(&:content)
-      {
+      output = {
         name:,
-        extensions: [year],
         link:,
         image:,
-      }   
+      }
+      output[:extensions] = [year] if year
+      output
     end
   end
 end

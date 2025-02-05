@@ -1,10 +1,12 @@
+# frozen_string_literal: true
 require "bundler/setup"
-require "rake"
 require "rake/testtask"
 
-Rake::TestTask.new do |t|
+Rake::TestTask.new(:test) do |t|
   t.libs << "test"
-  t.pattern = "test/**/*_test.rb"
+  t.libs << "lib"
+  t.test_files = FileList["test/**/*_test.rb"]
+  t.warning = false
 end
 
 task default: :test

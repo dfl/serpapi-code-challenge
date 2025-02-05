@@ -3,7 +3,7 @@ require "minitest/rg"
 require "minitest/reporters"
 Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
 require "shoulda-context"
-require "json_expressions/minitest" unless Gem.loaded_specs.key?("json_expressions")
+require "json_expressions/minitest"
 
 require "byebug"
 require "amazing_print"

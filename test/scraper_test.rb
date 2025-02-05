@@ -28,8 +28,23 @@ class ScraperTest < BaseTest
     end
 
     should "output json" do
-      assert json = @scraper.to_json
-      # assert_json_match json, JSON.parse(load_fixture("expected-array.json"))
+      assert json = JSON.parse(@scraper.to_json)
+
+      expected = JSON.parse(load_fixture("expected-array.json"))
+      assert_equal json["artworks"].size, expected["artworks"].size
+
+      pattern = {
+        artworks: [
+          {
+            name: String,
+            extensions: wildcard_matcher,
+            link: /^https:\/\/www\.google\.com\//,  # Matches the 'link' URL pattern
+            image: String #/https:\/\/encrypted-tbn\d\.gstatic\.com\/images\?q=tbn:/  # Matches the 'image' URL pattern
+          }
+        ] * 47
+      }
+
+      assert_json_match pattern, json
     end
 
   end
