@@ -1,0 +1,36 @@
+require:
+  - standard
+  - rubocop-performance
+  - rubocop-rails
+
+inherit_gem:
+  standard: config/base.yml
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - node_modules/**/*
+    - public/**/*
+    - vendor/**/*
+
+Rails:
+  Enabled: true # enable rubocop-rails cops
+Bundler/DuplicatedGem:
+  Enabled: false # ignore duplicated gem errors because we will have duplicated gems when dual booting
+
+# require:
+#   - rubocop-performance
+#   - standard/cop/semantic_blocks
+#   - ./lib/cops/lint/env.rb
+
+# inherit_mode:
+#   merge:
+#     - Exclude
+
+# inherit_gem:
+#   standard: config/base.yml
+#   prettier: rubocop.yml
+#   - node_modules/@prettier/plugin-ruby/rubocop.yml
+
+# inherit_from:
+#   - .rubocop_strict.yml

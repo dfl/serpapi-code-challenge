@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 gem "rake"
+gem 'rubocop', '~> 1.71', require: false
 
 gem "nokolexbor"
 
