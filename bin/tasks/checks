@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+checks () {
+  shell npx --yes nodemon \
+    --ext 'rb' \
+    --watch '.rubocop.yml' \
+    --watch 'Gemfile.lock' \
+    --watch 'Gemfile' \
+    --watch bin \
+    --watch lib \
+    --watch test \
+    --exec "
+      set -x &&
+      clear &&
+      if [[ -n \"${TESTS:-}\" ]]; then
+        bundle exec ruby \"${TESTS:-}\"
+      else
+        bundle exec rake
+      fi
+      # &&
+      # bundle exec rubocop -a
+    "
+}
+export -f checks

@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+for tasks in bin/tasks/*; do
+  source "$tasks"
+done
+
+COLOR_HIGHLIGHT='\033[1;35m'
+NO_COLOR='\033[0m'
+
+main () {
+  run_targets $*
+}
+
+run_targets () {
+  for func in $*; do
+    run $func
+  done
+}
+
+run () {
+  func=$1
+  if [[ $(type -t $func) == function ]]; then
+    print_func "${func}"
+    $func
+  else
+    echo "Unknown command: ${func}"
+    exit 1
+  fi
+}
+
+shell () {
+  if [[ -z $1 ]]; then
+    echo "Error: \`shell\` called with no arguments"
+    exit 1
+  fi
+
+  print_cmd $@
+  "$@"
+}
+
+print_func () {
+  echo -e "${COLOR_HIGHLIGHT}--> $@()${NO_COLOR}"
+}
+
+print_cmd () {
+  echo -e "${COLOR_HIGHLIGHT}----> $@${NO_COLOR}"
+}
+
+# DO IT:
+main $*
