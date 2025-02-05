@@ -9,3 +9,6 @@ gem "minitest-reporters", "~> 1.6"
 gem "shoulda-context", "~> 3.0.0.rc1"
 gem "minitest-rg"
 gem "pretty-diffs"
+
+gem "byebug"
+gem "amazing_print"
