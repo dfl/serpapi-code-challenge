@@ -1,10 +1,8 @@
 require "minitest/autorun"
 require "minitest/rg"
 require "minitest/reporters"
-
-require "shoulda-context"
-
 # Minitest::Reporters.use! Minitest::Reporters::SpecReporter.new
+require "shoulda-context"
 
 class BaseTest < Minitest::Test
   extend Shoulda::Context
