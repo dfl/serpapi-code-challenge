@@ -24,6 +24,7 @@ class ScraperTest < BaseTest
       hash = @scraper.to_h
       assert hash
       assert_match %r{^data:image/jpeg}, hash[:artworks][0][:image]
+      assert_match %r{google}, hash[:artworks][0][:link]
     end
 
     should "output json" do

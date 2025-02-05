@@ -44,6 +44,8 @@ class GoogleImageParser
       end
 
       link = element.parent.attr('href')
+      link = "https://www.google.com#{link}" if link && link.start_with?('/')
+
       div = element.next_sibling
       name, year = div.css("div").map(&:content)
       {
@@ -55,7 +57,3 @@ class GoogleImageParser
     end
   end
 end
-
-
-
-
