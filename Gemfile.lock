@@ -1,11 +1,22 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    addressable (2.8.7)
+      public_suffix (>= 2.0.2, < 7.0)
     amazing_print (1.7.2)
     ansi (1.5.0)
     ast (2.4.2)
+    base64 (0.2.0)
+    brotli (0.6.0)
     builder (3.3.0)
     byebug (11.1.3)
+    concurrent-ruby (1.3.5)
+    ferrum (0.16)
+      addressable (~> 2.5)
+      base64 (~> 0.2)
+      concurrent-ruby (~> 1.1)
+      webrick (~> 1.7)
+      websocket-driver (~> 0.7)
     json (2.9.1)
     json_expressions (0.9.0)
     language_server-protocol (3.17.0.4)
@@ -26,6 +37,7 @@ GEM
       ast (~> 2.4.1)
       racc
     pretty-diffs (1.0.2)
+    public_suffix (6.0.1)
     racc (1.8.1)
     rainbow (3.1.1)
     rake (13.2.1)
@@ -47,6 +59,12 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.0.4)
+    webrick (1.9.1)
+    websocket-driver (0.7.7)
+      base64
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.5)
+    zstd-ruby (1.5.6.6)
 
 PLATFORMS
   arm64-darwin
@@ -56,7 +74,9 @@ PLATFORMS
 
 DEPENDENCIES
   amazing_print
+  brotli
   byebug
+  ferrum
   json_expressions
   minitest
   minitest-reporters (~> 1.6)
@@ -66,6 +86,7 @@ DEPENDENCIES
   rake
   rubocop (~> 1.71)
   shoulda-context (~> 3.0.0.rc1)
+  zstd-ruby
 
 BUNDLED WITH
    2.6.2

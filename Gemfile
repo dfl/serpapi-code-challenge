@@ -14,3 +14,7 @@ gem "json_expressions" #, require: false
 
 gem "byebug"
 gem "amazing_print"
+
+gem "ferrum"
+gem "brotli"
+gem "zstd-ruby"

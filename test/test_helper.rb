@@ -8,6 +8,8 @@ require "json_expressions/minitest"
 require "byebug"
 require "amazing_print"
 
+require_relative "../lib/scraper"
+
 class BaseTest < Minitest::Test
   extend Shoulda::Context
 

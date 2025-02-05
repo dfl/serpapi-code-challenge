@@ -1,6 +1,4 @@
-require_relative "test_helper"
-
-require_relative "../lib/scraper"
+require_relative "../test_helper"
 
 class ScraperTest < BaseTest
   context "a Scraper" do
